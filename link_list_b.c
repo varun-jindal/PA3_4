@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<math.h>
 #define A (int)(pow(2, 19)/sizeof(struct node))
 #define B (int)(pow(2, 23)/sizeof(struct node))
 
@@ -39,7 +40,7 @@ int main(){
     
     struct node* head = NULL;
     if(A!=0){
-        make_list(A, &head);
+        make_list(B, &head);
         print_list(head);
     }
     //print_list(head);
