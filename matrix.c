@@ -27,10 +27,12 @@ int main(){
         for(j = 0; j < 4096; j++){
             sum = 0;
             for(z = 0; z < 512; z++){
-                sum += arr1[i][z]*arr2[z][j];
+                sum += (arr1[i][z])*(arr2[z][j]);
             }
             result[i][j] = sum;
+	    printf("%d ", sum);
         }
+	printf("/n");
     }
     
     return 0;

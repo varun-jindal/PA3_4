@@ -1,6 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
-#include<math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #define A (int)(pow(2, 19)/sizeof(struct node))
 #define B (int)(pow(2, 23)/sizeof(struct node))
 
@@ -10,40 +10,42 @@ struct node{
 };
 
 void make_list(int n, struct node** head){
-    
+    //printf("In make_node fn\n");
     int i;
-    *head = (struct node*)malloc(sizeof(struct node));
-    *head->val = rand();
+    (*head) = (struct node*)malloc(sizeof(struct node));
+    (*head)->val = rand();
+    struct node* next_node = (*head);
     for(i = 1; i < n; i++){
-        //*head->val = rand();
-        *head->next = (struct node*)malloc(sizeof(struct node));
-        //struct node* block = (struct node*)malloc(sizeof(struct node));
-        *head = *head->next;
-        *head->val = rand();
+        next_node->next = (struct node*)malloc(sizeof(struct node));
+        next_node = next_node->next;
+        next_node->val = rand();
     }
-    *head->next = NULL;
+    next_node->next = NULL;
+	//printf("Done make_list\n");
     
     return;
 }
 
 void print_list(struct node* head){
-
-    while(head->next != NULL){
-        printf("%d ", head->val);
-        head = head->next
+    //printf("printing\n");
+    while(head->next != NULL){ 
+        printf("%d \n", head->val);
+        head = head->next;
     }
     printf("%d ", head->val);
-
+    printf("done printing\n");
     return;
 }
  
 int main(){
     
     struct node* head = NULL;
-    if(A!=0){
+    struct node** origin = &head;
+    if(B!=0){
         make_list(B, &head);
-        print_list(head);
+        print_list(*origin);
     }
     //print_list(head);
     return 0;
 }
+

@@ -1,5 +1,6 @@
-#include<stdio.h>
-#include<stdlib.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
 #define A (int)(pow(2, 19)/sizeof(struct node))
 #define B (int)(pow(2, 23)/sizeof(struct node))
 
@@ -9,18 +10,19 @@ struct node{
     struct node* left;
 };
 
-void make_tree(int n, struct node** head){
-    
+void make_tree(int n, struct node* head){
+    //(*new_node) = (struct node*)malloc(sizeof(struct node));
+    //struct node* head = (*new_node);
     if(n != 0){
-        *head->val = rand();
-        *head->left = (struct node*)malloc(sizeof(struct node));
-        *head->right = (struct node*)malloc(sizeof(struct node));
-        make_tree((n-1)/2, &(*head->left));
-        make_tree((n-1)/2, &(*head->right)); 
+        head->val = rand();
+        head->left = (struct node*)malloc(sizeof(struct node));
+        head->right = (struct node*)malloc(sizeof(struct node));
+        make_tree((n-1)/2, (head->left));
+        make_tree((n-1)/2, (head->right)); 
     }
     else{
-        *head->left = NULL;
-        *head->right = NULL;
+        head->left = NULL;
+        head->right = NULL;
     }
     return;
 }
@@ -34,9 +36,9 @@ void print_tree(struct node* head){
 }
 int main(){
 
-    struct node* head = NULL;
-    struct node** origin = &head;
-    make_tree(A-1, &head);
-    print_tree(*origin);
+    struct node* head = (struct node*)malloc(sizeof(struct node));
+    //struct node** origin = &head;
+    make_tree(A-1, head);
+    print_tree(head);
     return 0;
 }
