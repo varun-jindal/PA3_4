@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include<math.h>
 #define A (int)(pow(2, 19)/sizeof(struct node))
 #define B (int)(pow(2, 23)/sizeof(struct node))
@@ -11,16 +12,16 @@ struct node{
 void make_list(int n, struct node** head){
     
     int i;
-    *head = (struct node*)malloc(sizeof(struct node));
-    *head->val = rand();
+    (*head) = (struct node*)malloc(sizeof(struct node));
+    (*head)->val = rand();
     for(i = 1; i < n; i++){
         //*head->val = rand();
-        *head->next = (struct node*)malloc(sizeof(struct node));
+        (*head)->next = (struct node*)malloc(sizeof(struct node));
         //struct node* block = (struct node*)malloc(sizeof(struct node));
-        *head = *head->next;
-        *head->val = rand();
+        (*head) = (*head)->next;
+        (*head)->val = rand();
     }
-    *head->next = NULL;
+    (*head)->next = NULL;
     
     return;
 }
@@ -28,8 +29,8 @@ void make_list(int n, struct node** head){
 void print_list(struct node* head){
 
     while(head->next != NULL){
-        printf("%d ", head->val);
-        head = head->next
+        printf("%d /n", head->val);
+        head = head->next;
     }
     printf("%d ", head->val);
 

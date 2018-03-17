@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include<stdlib.h>
 #define A (int)(pow(2, 19)/sizeof(struct node))
 #define B (int)(pow(2, 23)/sizeof(struct node))
 
