@@ -1,3 +1,5 @@
+//usr/bin/clang "$0" && exec ./a.out "$@"
+
 #include <stdio.h>
 #include <stdlib.h>
 #define A 256

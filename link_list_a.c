@@ -1,3 +1,5 @@
+//usr/bin/clang "$0" && exec ./a.out "$@"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
